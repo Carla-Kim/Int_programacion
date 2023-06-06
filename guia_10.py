@@ -51,7 +51,7 @@ def cantidadApariciones(archivoEnviado: str, palabraEnviada: str) -> int:
 
 print(cantidadApariciones("archivotest", "texto"))
 
-2.2
+#2
 def clonarSinComentarios(nombre_archivo: str):
     archivo = open(nombre_archivo, "r")
     contenido = archivo.readlines()
@@ -70,3 +70,18 @@ def clonarSinComentarios(nombre_archivo: str):
     destino.close()
 
 print(clonarSinComentarios("archivotest.txt"))
+
+#3
+def textoReverso(nombre_archivo: str):
+    archivo = open(nombre_archivo, "r")
+    destino = open("textoReverso", "w", encoding = "utf8")
+    destino.truncate()
+
+    for linea in archivo.readlines():
+        linea = linea[::-1]
+        destino.write(linea)
+    
+    archivo.close()
+    destino.close()
+
+print(textoReverso("archivotest.txt"))
