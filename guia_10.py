@@ -50,3 +50,23 @@ def cantidadApariciones(archivoEnviado: str, palabraEnviada: str) -> int:
     return cantidadApariciones
 
 print(cantidadApariciones("archivotest", "texto"))
+
+2.2
+def clonarSinComentarios(nombre_archivo: str):
+    archivo = open(nombre_archivo, "r")
+    contenido = archivo.readlines()
+    listaDeListaDePalabras: list[str] = []
+
+    for linea in contenido:
+        listaDeListaDePalabras.append(linea.split()) # .append une listas
+
+    destino = open("clonSinComentarios.txt", "w", encoding = "utf8")
+    
+    for l in range(0, len(listaDeListaDePalabras)):
+        if listaDeListaDePalabras[l][0] != "#":
+            destino.write(contenido[l])
+    
+    archivo.close()
+    destino.close()
+
+print(clonarSinComentarios("archivotest.txt"))
