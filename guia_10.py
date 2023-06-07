@@ -18,7 +18,7 @@ def contarLineas(archivoEnviado: str) -> int:
     archivo.close()
     return contador
     
-print(contarLineas("archivotest"))
+#print(contarLineas("archivotest.txt"))
 
 #1.2: notar que la linea es "texto texto" y no "texto", "texto"
 def existePalabra(palabraEnviada: str, archivoEnviado: str) -> bool:
@@ -30,7 +30,7 @@ def existePalabra(palabraEnviada: str, archivoEnviado: str) -> bool:
     archivo.close()
     return False
 
-print(existePalabra("texto", "archivotest"))
+#print(existePalabra("texto", "archivotest.txt"))
 
 #1.3
 def cantidadApariciones(archivoEnviado: str, palabraEnviada: str) -> int:
@@ -40,7 +40,7 @@ def cantidadApariciones(archivoEnviado: str, palabraEnviada: str) -> int:
     listaDePalabras: list[str] = []
     
     for lista in contenido:
-        listaDePalabras += lista.split()
+        listaDePalabras += lista.split() #+= une las palabras/elementos por separado
         
     for palabra in listaDePalabras:
         if palabraEnviada in palabra:
@@ -49,7 +49,7 @@ def cantidadApariciones(archivoEnviado: str, palabraEnviada: str) -> int:
     
     return cantidadApariciones
 
-print(cantidadApariciones("archivotest", "texto"))
+#print(cantidadApariciones("archivotest.txt", "texto"))
 
 #2
 def clonarSinComentarios(nombre_archivo: str):
@@ -69,16 +69,16 @@ def clonarSinComentarios(nombre_archivo: str):
     archivo.close()
     destino.close()
 
-print(clonarSinComentarios("archivotest.txt"))
+#print(clonarSinComentarios("archivotest.txt"))
 
 #3
 def textoReverso(nombre_archivo: str):
     archivo = open(nombre_archivo, "r")
-    destino = open("textoReverso", "w", encoding = "utf8")
+    destino = open("reverso.txt", "w", encoding = "utf8")
     destino.truncate()
+ #.reverse() no se lo puede usar para elementos iterables pero si reversed(), notar que reverse() cambia la lista en su lugar 
 
-    for linea in archivo.readlines():
-        linea = linea[::-1]
+    for linea in reversed(archivo.readlines()):
         destino.write(linea)
     
     archivo.close()
