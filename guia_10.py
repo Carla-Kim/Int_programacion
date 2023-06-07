@@ -76,12 +76,12 @@ def textoReverso(nombre_archivo: str):
     archivo = open(nombre_archivo, "r")
     destino = open("reverso.txt", "w", encoding = "utf8")
     destino.truncate()
- #.reverse() no se lo puede usar para elementos iterables pero si reversed(), notar que reverse() cambia la lista en su lugar 
 
     for linea in reversed(archivo.readlines()):
         destino.write(linea)
-    
+    #.reverse() no se lo puede usar para elementos iterables pero si reversed(), notar que reverse() cambia la lista en su lugar y solo deberiamos llamar a la funcion que le aplicamos el reverse, pero el reversed() crea una copia
+
     archivo.close()
     destino.close()
 
-print(textoReverso("archivotest.txt"))
+#print(textoReverso("archivotest.txt"))
