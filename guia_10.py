@@ -104,14 +104,16 @@ def generarNrosAlAzar(n: int, desde: int, hasta: int) -> list[int]:
 
 #2.9: # ¿Para qué hacer esto? Pues generarNrosAlAzar() nos crea una lista con .append() y con LifoQueue .put() no aseguramos que es una pila de alguna forma y no una lista. De esta forma podríamos usar las operaciones de LifoQueue
 
-def armarPilaDeLista2(lista: list[int]) -> Pila:
+#no va a devolver nada en especifico pues es una pila, por la implementación interna que hay no va a ser posible que nos muestre algo sino mas bien nos devolverá la posición de memoria (<queue.LifoQueue object at 0x000002BBC1723AD0>)
+
+def armarPilaDeLista(lista: list[int]) -> Pila:
     pila = Pila()
     for n in lista:
         pila.put(n)
 
     return pila
 
-#print(armarPilaDeLista2([1,2,2]))
+#print(armarPilaDeLista(generarNrosAlAzar(3,2,6))))
 
 #2.10: print(cantidadElementos(generarNrosAlAzar(3,2,6))) -> no es valido pues es una lista
 def cantidadElementos(p: Pila) -> int:
@@ -130,8 +132,9 @@ def buscarElMaximo(p: Pila) -> int:
     
     return elMaximo
 
-#print(buscarElMaximo(armarPilaDeLista2([1,2,5,999])))
+#print(buscarElMaximo(armarPilaDeLista([1,2,5,999])))
 
 #2.12
 def estaBienBalanceada(s: str) -> bool:
     s = None
+
