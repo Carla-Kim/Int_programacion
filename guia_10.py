@@ -1,3 +1,6 @@
+import random
+from queue import LifoQueue as Pila
+from queue import Queue as Cola
 '''
 notas:
 - read() -> ("perro /ngato /nsapo")
@@ -8,7 +11,7 @@ notas:
 
 '''
 
-#1.2
+#1.1.2
 def contarLineas(archivoEnviado: str) -> int:
     archivo = open(archivoEnviado, "r")
     contador: int = 0
@@ -20,7 +23,7 @@ def contarLineas(archivoEnviado: str) -> int:
     
 #print(contarLineas("archivotest.txt"))
 
-#1.2: notar que la linea es "texto texto" y no "texto", "texto"
+#1.1.2: notar que la linea es "texto texto" y no "texto", "texto"
 def existePalabra(palabraEnviada: str, archivoEnviado: str) -> bool:
     archivo = open(archivoEnviado, "r")
     listaDeLineas: list[str] = archivo.readlines()
@@ -32,7 +35,7 @@ def existePalabra(palabraEnviada: str, archivoEnviado: str) -> bool:
 
 #print(existePalabra("texto", "archivotest.txt"))
 
-#1.3
+#1.1.3
 def cantidadApariciones(archivoEnviado: str, palabraEnviada: str) -> int:
     cantidadApariciones: int = 0
     archivo = open(archivoEnviado, "r")
@@ -51,7 +54,8 @@ def cantidadApariciones(archivoEnviado: str, palabraEnviada: str) -> int:
 
 #print(cantidadApariciones("archivotest.txt", "texto"))
 
-#2
+
+#1.2
 def clonarSinComentarios(nombre_archivo: str):
     archivo = open(nombre_archivo, "r")
     contenido = archivo.readlines()
@@ -71,7 +75,8 @@ def clonarSinComentarios(nombre_archivo: str):
 
 #print(clonarSinComentarios("archivotest.txt"))
 
-#3
+
+#1.3
 def textoReverso(nombre_archivo: str):
     archivo = open(nombre_archivo, "r")
     destino = open("reverso.txt", "w", encoding = "utf8")
@@ -85,3 +90,51 @@ def textoReverso(nombre_archivo: str):
     destino.close()
 
 #print(textoReverso("archivotest.txt"))
+
+#2.8
+def generarNrosAlAzar(n: int, desde: int, hasta: int) -> list[int]:
+    lista: list[int] = []
+
+    for i in range(desde, hasta + 1):
+        lista.append(i)
+
+    listaRandom: list[int] = random.sample(lista, n)
+
+    return(listaRandom)
+
+#print(generarNrosAlAzar(5,2,6)) #es una lista pues .append() es de lista
+
+#2.9: # ¿Para qué hacer esto? Pues generarNrosAlAzar() nos crea una lista con .append() y con LifoQueue .put() no aseguramos que es una pila de alguna forma y no una lista. De esta forma podríamos usar las operaciones de LifoQueue
+
+def armarPilaDeLista2(lista: list[int]) -> Pila:
+    pila = Pila()
+    for n in lista:
+        pila.put(n)
+
+    return pila
+
+#print(armarPilaDeLista2([1,2,2]))
+
+#2.10: print(cantidadElementos(generarNrosAlAzar(3,2,6))) -> no es valido pues es una lista
+def cantidadElementos(p: Pila) -> int:
+    return p.qsize()
+
+#print(cantidadElementos(armarPila(generarNrosAlAzar(3,2,6))))
+
+#2.11: no poner p.get() directamente no sirve, ponelo en una varianble
+def buscarElMaximo(p: Pila) -> int:
+    elMaximo: int = 0
+
+    while not(p.empty()):
+        currentElement = p.get()
+        if currentElement > elMaximo:
+            elMaximo = currentElement
+    
+    return elMaximo
+
+#print(buscarElMaximo(armarPilaDeLista2([1,2,5,999])))
+
+#2.12
+def estaBienBalanceada(s: str) -> bool:
+    s = None
+
