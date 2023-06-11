@@ -1,6 +1,6 @@
 import random
 from queue import LifoQueue as Pila
-
+from queue import Queue as Cola
 '''
 notas:
 - read() -> ("perro /ngato /nsapo")
@@ -102,14 +102,7 @@ def generarNrosAlAzar(n: int, desde: int, hasta: int) -> list[int]:
 
 #print(generarNrosAlAzar(5,2,6)) #es una lista pues .append() es de lista
 
-#2.9 ¿Armar una pila con los numeros generados al azar del punto anterior?
-def armarPilaDeNrosAlAzar(n: int, desde: int, hasta: int) -> Pila:
-    pila = Pila()
-    lista: list[int] = generarNrosAlAzar(n,desde,hasta)
-    for i in lista:
-        pila.put(i)
-
-    return pila
+#2.9: # ¿Para qué hacer esto? Pues generarNrosAlAzar() nos crea una lista con .append() y con LifoQueue .put() no aseguramos que es una pila de alguna forma y no una lista. De esta forma podríamos usar las operaciones de LifoQueue
 
 def armarPilaDeLista2(lista: list[int]) -> Pila:
     pila = Pila()
@@ -119,17 +112,14 @@ def armarPilaDeLista2(lista: list[int]) -> Pila:
     return pila
 
 #print(armarPilaDeLista2([1,2,2]))
-#print(armarPilaDeNrosAlAzar(3,2,6))
-#¿Para qué? Pues generarNrosAlAzar() nos crea una lista con .append() y con LifoQueue .put() no aseguramos que es una pila de alguna forma y no una lista
 
-#2.10
+#2.10: print(cantidadElementos(generarNrosAlAzar(3,2,6))) -> no es valido pues es una lista
 def cantidadElementos(p: Pila) -> int:
     return p.qsize()
 
 #print(cantidadElementos(armarPila(generarNrosAlAzar(3,2,6))))
-#print(cantidadElementos(generarNrosAlAzar(3,2,6))) -> no es valido pues es una lista
 
-#2.11
+#2.11: no poner p.get() directamente no sirve, ponelo en una varianble
 def buscarElMaximo(p: Pila) -> int:
     elMaximo: int = 0
 
@@ -140,7 +130,8 @@ def buscarElMaximo(p: Pila) -> int:
     
     return elMaximo
 
-print(buscarElMaximo(armarPilaDeLista2([1,2,5,999])))
+#print(buscarElMaximo(armarPilaDeLista2([1,2,5,999])))
 
 #2.12
-#def estaBienBalanceada(s: str) -> bool:
+def estaBienBalanceada(s: str) -> bool:
+    s = None
