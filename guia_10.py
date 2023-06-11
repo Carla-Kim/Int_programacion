@@ -54,6 +54,7 @@ def cantidadApariciones(archivoEnviado: str, palabraEnviada: str) -> int:
 
 #print(cantidadApariciones("archivotest.txt", "texto"))
 
+
 #1.2
 def clonarSinComentarios(nombre_archivo: str):
     archivo = open(nombre_archivo, "r")
@@ -73,6 +74,7 @@ def clonarSinComentarios(nombre_archivo: str):
     destino.close()
 
 #print(clonarSinComentarios("archivotest.txt"))
+
 
 #1.3
 def textoReverso(nombre_archivo: str):
@@ -135,3 +137,4 @@ def buscarElMaximo(p: Pila) -> int:
 #2.12
 def estaBienBalanceada(s: str) -> bool:
     s = None
+
