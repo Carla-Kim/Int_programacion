@@ -1,6 +1,7 @@
 import random
 from queue import LifoQueue as Pila
 from queue import Queue as Cola
+
 '''
 notas:
 - read() -> ("perro /ngato /nsapo")
@@ -54,7 +55,6 @@ def cantidadApariciones(archivoEnviado: str, palabraEnviada: str) -> int:
 
 #print(cantidadApariciones("archivotest.txt", "texto"))
 
-
 #1.2
 def clonarSinComentarios(nombre_archivo: str):
     archivo = open(nombre_archivo, "r")
@@ -74,7 +74,6 @@ def clonarSinComentarios(nombre_archivo: str):
     destino.close()
 
 #print(clonarSinComentarios("archivotest.txt"))
-
 
 #1.3
 def textoReverso(nombre_archivo: str):
@@ -128,9 +127,9 @@ def buscarElMaximo(p: Pila) -> int:
     elMaximo: int = 0
 
     while not(p.empty()):
-        currentElement = p.get()
-        if currentElement > elMaximo:
-            elMaximo = currentElement
+        elementoActual = p.get()
+        if elementoActual > elMaximo:
+            elMaximo = elementoActual
     
     return elMaximo
 
@@ -140,3 +139,26 @@ def buscarElMaximo(p: Pila) -> int:
 def estaBienBalanceada(s: str) -> bool:
     s = None
 
+#3.13
+def armarColaDeLista(lista: list[int]) -> Cola:
+    cola = Cola()
+    for n in lista:
+        cola.put(n)
+
+    return cola
+
+#pi
+def cantidadElementos(c: Cola) -> int:
+    return c.qsize()
+
+#3.15
+def buscarElMaximo(c: Cola) -> int:
+    elMaximo: int = 0
+    while not(c.empty()):
+        elementoActual = c.get()
+        if elementoActual > elMaximo:
+            elMaximo = elementoActual
+    return elMaximo
+
+#3.16
+#3.17
