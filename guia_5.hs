@@ -15,9 +15,6 @@ ultimo2 lista = head(reverso(lista))
 principio :: [t] -> [t]
 principio lista = reverso(tail(reverso(lista)))
 
-{- principio2 :: [t] -> [t]
-principio2 lista -}
-
 --1.4
 reverso :: [t] -> [t]
 reverso [] = []
